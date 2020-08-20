@@ -40,8 +40,25 @@ class Airplane {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-class Person {
+class Person{
+  constructor (name, age) {
+    this.name = name;
+    this.age = age;
+    this.stomach = [];
+  }
 
+  eat(food) {
+  if (this.stomach.length < 10)
+    this.stomach.push(food);
+  }
+
+  poop() {
+    this.stomach = [];
+  };
+
+  toString() {
+    return `${this.name}, ${this.age}`;
+  };
 }
 
 /*
@@ -59,7 +76,28 @@ class Person {
 */
 
 class Car {
+  constructor (model, milesPerGallon) {
+   this.model = model;
+   this.milesPerGallon = milesPerGallon;
+   this.tank = 0;
+   this.odometer = 0;
+  }
 
+  fill(gallons) {
+    this.tank += gallons;
+  }
+
+  drive(distance) {
+    let maxMiles = this.tank * this.milesPerGallon;
+    if (distance <= maxMiles) {
+      this.odometer += distance;
+      this.tank -= distance / this.milesPerGallon;
+    } else {
+      this.tank = 0;
+      this.odometer = maxMiles;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+   }
+  }
 }
 
 /*
@@ -91,7 +129,7 @@ class Lambdasian {
     - Instructor instances have the following methods:
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
-*/
+// */
 class Instructor {
 
 }
